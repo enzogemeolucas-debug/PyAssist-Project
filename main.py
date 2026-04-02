@@ -42,6 +42,19 @@ def piadas():
                     'O que o programador faz quando está com fome? Ele dá um “byte”',
                     'Por que programadores confundem Halloween com Natal? Porque OCT 31 == DEC 25']
     print(f'\033[0;34m{random.choice(lista_piadas)}\033[m')
+def adivinhe_o_numero():
+    print('\033[0;33mEU PENSEI EM UM NUMERO ENTRE 0 E 10, TENTE ADIVINHAR!\033[m')
+    while True:
+        try:
+            numero = int(input("em que número eu pensei? "))
+            break
+        except ValueError:
+            print("DIGITE SOMENTE NÚMERO!")
+    numero_secreto = random.randint(0, 10)
+    if numero == numero_secreto:
+        print("\033[1;32mVOCÊ ACERTOU!\033[m")
+    else:
+        print(f"Que pena! eu pensei no numero {numero_secreto}")
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
@@ -67,7 +80,8 @@ while True:
 [3] Dado de 20 lados(RPG)
 [4] Ver Tabuada
 [5] Piadas
-[6] Sair
+[6] Adivinhe o número
+[7] sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -85,6 +99,8 @@ while True:
     elif command == 5:
         piadas()
     elif command == 6:
+        adivinhe_o_numero()
+    elif command == 7:
         sair()
         break
     else:
