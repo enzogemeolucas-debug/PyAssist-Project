@@ -56,7 +56,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 #começando o programa
 print(art)
 print('\033[0;34m--=\033[m'*15)
-print("\033[1;33mbem-vindo ao PyAssist, o assistente virtual!\033[m")
+print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
 
 while True:
