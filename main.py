@@ -34,21 +34,24 @@ def tabuada():
         print(f"{numero} × {i} = {numero * i}")
     print("--=" * 10)
 
+def piadas():
+    print("aqui vai uma piada:")
+    lista_piadas = ['Existem 11 tipos de pessoas: as que entendem binário, as que não entendem, e as que pensam que entendem.',
+                    'A mãe fala para o filho programador: "Enquanto estiver fora, compre leite". Ele nunca mais voltou',
+                    'Hardware é o que você chuta, software é o que você xinga',
+                    'O que o programador faz quando está com fome? Ele dá um “byte”',
+                    'Por que programadores confundem Halloween com Natal? Porque OCT 31 == DEC 25']
+    print(f'\033[0;34m{random.choice(lista_piadas)}\033[m')
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
 
-art = r''' ______________
-||PyAssist    ||
-||            ||
-||            ||
-||            ||
-||____________||
-|______________|
- \\############\\
-  \\############\\
-   \      ____    \ 
-    \_____\___\____\ ASCII by CA15
+art = r'''██████╗ ██╗   ██╗ █████╗ ███████╗███████╗██╗███████╗████████╗
+██╔══██╗╚██╗ ██╔╝██╔══██╗██╔════╝██╔════╝██║██╔════╝╚══██╔══╝
+██████╔╝ ╚████╔╝ ███████║███████╗███████╗██║███████╗   ██║   
+██╔═══╝   ╚██╔╝  ██╔══██║╚════██║╚════██║██║╚════██║   ██║   
+██║        ██║   ██║  ██║███████║███████║██║███████║   ██║   
+╚═╝        ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚══════╝   ╚═╝
 '''
 #começando o programa
 print(art)
@@ -63,7 +66,8 @@ while True:
 [2] Ver a data atual
 [3] Dado de 20 lados(RPG)
 [4] Ver Tabuada
-[5] Sair
+[5] Piadas
+[6] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -79,6 +83,8 @@ while True:
     elif command == 4:
         tabuada()
     elif command == 5:
+        piadas()
+    elif command == 6:
         sair()
         break
     else:
