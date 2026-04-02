@@ -22,7 +22,13 @@ def rolar_dado():
     print(f"O número sorteado foi \033[0;34m{random.randint(1, 20)}\033[m!")
 
 def tabuada():
-    numero = int(input("Digite o número que você quer ver a tabuada: "))
+    while True:
+        try:
+            numero = int(input("Digite o número que você quer ver a tabuada: "))
+            break
+        except ValueError:
+            print("Erro! Digite somente numero!")
+            continue
     print("--=" * 10)
     for i in range(1, 11):
         print(f"{numero} × {i} = {numero * i}")
