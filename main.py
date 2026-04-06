@@ -1,6 +1,6 @@
 import time
 import random
-
+import webbrowser
 
 #funcoes para que o programa funcione e deixar mais organizado
 def ver_hora():
@@ -42,19 +42,34 @@ def piadas():
                     'O que o programador faz quando está com fome? Ele dá um “byte”',
                     'Por que programadores confundem Halloween com Natal? Porque OCT 31 == DEC 25']
     print(f'\033[0;34m{random.choice(lista_piadas)}\033[m')
+
 def adivinhe_o_numero():
     print('\033[0;33mEU PENSEI EM UM NUMERO ENTRE 0 E 10, TENTE ADIVINHAR!\033[m')
+    numero_secreto = random.randint(0, 10)
     while True:
         try:
             numero = int(input("em que número eu pensei? "))
             break
         except ValueError:
             print("DIGITE SOMENTE NÚMERO!")
-    numero_secreto = random.randint(0, 10)
     if numero == numero_secreto:
         print("\033[1;32mVOCÊ ACERTOU!\033[m")
     else:
         print(f"Que pena! eu pensei no numero {numero_secreto}")
+
+def abrir_um_site_inutil():
+    sites = ['https://theuselessweb.com/', 'https://pointerpointer.com/', 'https://www.boredbutton.com/', 'https://cat-bounce.com/',
+             'https://heeeeeeeey.com/', 'https://zoomquilt.org/', 'http://www.staggeringbeauty.com/', 'http://www.fallingfalling.com/',
+             'http://eelslap.com/', 'http://endless.horse/', 'https://trumpet.dance/', 'https://screamintothevoid.com/',
+             'https://isitchristmas.com/', 'https://randomcolour.com/', 'https://longdogechallenge.com/',
+             'https://checkboxrace.com/', 'https://clickclickclick.click/']
+    print("Abrindo um site inutil...")
+    time.sleep(2)
+    site_escolhido = random.choice(sites)
+    print(f"O site {site_escolhido} foi o escolhido!")
+    time.sleep(1)
+    webbrowser.open(site_escolhido)
+
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
@@ -68,20 +83,22 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
+print("Version 7.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
 
 while True:
     try:
-        command = int(input("""Digite o número do comando:
+        command = int(input("""\033[0;36mDigite o número do comando:\033[m
 [1] Ver a hora atual
 [2] Ver a data atual
 [3] Dado de 20 lados(RPG)
 [4] Ver Tabuada
 [5] Piadas
 [6] Adivinhe o número
-[7] sair
+[7] Abrir um site inútil
+[8] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -101,6 +118,8 @@ while True:
     elif command == 6:
         adivinhe_o_numero()
     elif command == 7:
+        abrir_um_site_inutil()
+    elif command == 8:
         sair()
         break
     else:
