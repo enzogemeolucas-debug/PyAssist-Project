@@ -87,7 +87,10 @@ def calculadora():
     elif operacao == '*':
         print(f"{num1} * {num2} = {num1 * num2}")
     elif operacao == '/':
-        print(f"{num1} / {num2} = {num1 / num2}")
+        try:
+            print(f"{num1} / {num2} = {num1 / num2}")
+        except ZeroDivisionError:
+            print("NÃO É POSSIVEL DIVIDIR POR 0!")
 
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
@@ -102,7 +105,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 8.0")
+print("Version 9.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
