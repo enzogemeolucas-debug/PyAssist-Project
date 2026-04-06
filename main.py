@@ -2,7 +2,7 @@ import time
 import random
 import webbrowser
 
-#funcoes para que o programa funcione e deixar mais organizado
+#funções para que o programa funcione e deixar mais organizado
 def ver_hora():
     hora_atual = time.localtime()
     hora = hora_atual.tm_hour
@@ -70,6 +70,25 @@ def abrir_um_site_inutil():
     time.sleep(1)
     webbrowser.open(site_escolhido)
 
+def calculadora():
+    while True:
+        try:
+            num1 = float(input("Digite o primeiro número: "))
+            num2 = float(input("Digite o segundo número: "))
+            break
+        except ValueError:
+            print("DIGITE SOMENTE NÚMERO!")
+            continue
+    operacao = input("digite a operação: (+ - * /) ")
+    if operacao == '+':
+        print(f"{num1} + {num2} = {num1 + num2}")
+    elif operacao == '-':
+        print(f"{num1} - {num2} = {num1 - num2}")
+    elif operacao == '*':
+        print(f"{num1} * {num2} = {num1 * num2}")
+    elif operacao == '/':
+        print(f"{num1} / {num2} = {num1 / num2}")
+
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
@@ -83,7 +102,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 7.0")
+print("Version 8.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
@@ -98,7 +117,8 @@ while True:
 [5] Piadas
 [6] Adivinhe o número
 [7] Abrir um site inútil
-[8] Sair
+[8] Calculadora
+[9] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -120,6 +140,8 @@ while True:
     elif command == 7:
         abrir_um_site_inutil()
     elif command == 8:
+        calculadora()
+    elif command == 9:
         sair()
         break
     else:
