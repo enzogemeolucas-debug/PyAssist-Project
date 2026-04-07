@@ -1,6 +1,7 @@
 import time
 import random
 import webbrowser
+import urllib.parse
 
 #funções para que o programa funcione e deixar mais organizado
 def ver_hora():
@@ -92,6 +93,11 @@ def calculadora():
         except ZeroDivisionError:
             print("NÃO É POSSIVEL DIVIDIR POR 0!")
 
+def pesquisar():
+    tema = input('O que deseja pesquisar? ')
+    tema_formatado = urllib.parse.quote(tema.replace(' ', '_'))
+    webbrowser.open(f'https://pt.wikipedia.org/wiki/{tema_formatado}')
+
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
@@ -105,7 +111,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 9.0")
+print("Version 10.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
@@ -121,7 +127,8 @@ while True:
 [6] Adivinhe o número
 [7] Abrir um site inútil
 [8] Calculadora
-[9] Sair
+[9] Pesquisar na wikipédia
+[10] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -145,6 +152,8 @@ while True:
     elif command == 8:
         calculadora()
     elif command == 9:
+        pesquisar()
+    elif command == 10:
         sair()
         break
     else:
