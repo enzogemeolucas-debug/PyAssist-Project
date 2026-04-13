@@ -2,6 +2,7 @@ import time
 import random
 import webbrowser
 import urllib.parse
+import math
 
 #funções para que o programa funcione e deixar mais organizado
 def ver_hora():
@@ -17,6 +18,10 @@ def ver_data():
     ano = dia_atual.tm_year
     print(f"hoje é \033[0;34m{dia:02d}/{mes:02d}/{ano:04d}\033[m")
 
+    if dia == 12 and mes == 4:
+        idade = ano - 2015
+        print('\033[1;34mHOJE É O ANIVER\033[1;33mSÁRIO DO CRIADOR!\033[m')
+        print(f"ELE ESTÁ COM \033[1;32m{idade}\033[m ANOS!")
 def rolar_dado():
     print("Rolando o dado...")
     time.sleep(3)
@@ -98,6 +103,14 @@ def pesquisar():
     tema_formatado = urllib.parse.quote(tema.replace(' ', '_'))
     webbrowser.open(f'https://pt.wikipedia.org/wiki/{tema_formatado}')
 
+def hipotenusa():
+    cateto_oposto = float(input("Digite o comprimento do cateto oposto: "))
+    cateto_adjacente = float(input("Digite o comprimento do cateto adjacente: "))
+    print("Calculando hipotenusa...")
+    time.sleep(3)
+    hipotenusa = math.sqrt(cateto_oposto ** 2 + cateto_adjacente ** 2)
+    print(f"A hipotenusa é de {hipotenusa:.2f}")
+
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
     time.sleep(3)
@@ -111,7 +124,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 10.0")
+print("Version 11.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
@@ -128,7 +141,8 @@ while True:
 [7] Abrir um site inútil
 [8] Calculadora
 [9] Pesquisar na wikipédia
-[10] Sair
+[10] Calcular hipotenusa
+[11] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -154,6 +168,8 @@ while True:
     elif command == 9:
         pesquisar()
     elif command == 10:
+        hipotenusa()
+    elif command == 11:
         sair()
         break
     else:
