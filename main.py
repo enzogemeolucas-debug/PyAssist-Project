@@ -104,12 +104,54 @@ def pesquisar():
     webbrowser.open(f'https://pt.wikipedia.org/wiki/{tema_formatado}')
 
 def hipotenusa():
-    cateto_oposto = float(input("Digite o comprimento do cateto oposto: "))
-    cateto_adjacente = float(input("Digite o comprimento do cateto adjacente: "))
+    while True:
+        try:
+            cateto_oposto = float(input("Digite o comprimento do cateto oposto: "))
+            cateto_adjacente = float(input("Digite o comprimento do cateto adjacente: "))
+            break
+        except ValueError:
+            print("digite somente numero!")
+            continue
     print("Calculando hipotenusa...")
     time.sleep(3)
     hipotenusa = math.sqrt(cateto_oposto ** 2 + cateto_adjacente ** 2)
     print(f"A hipotenusa é de {hipotenusa:.2f}")
+def pedrapapeltesoura():
+    pontos_computador = 0
+    pontos_jogador = 0
+
+    print('\033[0;33m--=\033[m'*20)
+    print("\033[1;34mBEM-VINDO AO PEDRA PAPEL E TESOURA\033[m")
+    print('\033[0;33m--=\033[m'*20)
+
+    opcoes = ['pedra', 'papel', 'tesoura']
+    while True:
+        print(f"Placar: \033[0;31m{pontos_jogador}x{pontos_computador}\033[m")
+        escolha = input("digite pedra ,papel, tesoura ou sair: ").lower().strip()
+        if escolha == 'sair':
+            print(f"O jogo ficou com o placar de \033[0;31m{pontos_jogador}x{pontos_computador}\033[m")
+            print('\033[0;32mVOLTE LOGO :)')
+            break
+
+        elif escolha in opcoes:
+            print("PEDRA")
+            time.sleep(1)
+            print("PAPEL")
+            time.sleep(1)
+            print("TESOURA!")
+            time.sleep(1)
+            escolha_computador = random.choice(opcoes)
+            print(f"Eu escolhi \033[1;32m{escolha_computador}\033[m\nVocê escolheu \033[1;32m{escolha}\033[m")
+            if escolha_computador == escolha:
+                print("\033[0;33mEMPATE!\033[m")
+            elif (escolha == 'pedra' and escolha_computador == 'tesoura') or (escolha == 'papel' and escolha_computador == 'pedra') or (escolha == 'tesoura' and escolha_computador == 'papel'):
+                print('\033[1;32mVOCÊ ME VENCEU!\033[m')
+                pontos_jogador += 1
+            else:
+                print("\033[1;31mEU VENCI\033[m")
+                pontos_computador += 1
+        else:
+            print("Não entendi :~")
 
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
@@ -124,7 +166,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 11.0")
+print("Version 12.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
@@ -142,7 +184,8 @@ while True:
 [8] Calculadora
 [9] Pesquisar na wikipédia
 [10] Calcular hipotenusa
-[11] Sair
+[11] Pedra, papel e tesoura
+[12] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -170,6 +213,8 @@ while True:
     elif command == 10:
         hipotenusa()
     elif command == 11:
+        pedrapapeltesoura()
+    elif command == 12:
         sair()
         break
     else:
