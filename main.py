@@ -3,6 +3,7 @@ import random
 import webbrowser
 import urllib.parse
 import math
+import string
 
 #funções para que o programa funcione e deixar mais organizado
 def ver_hora():
@@ -22,6 +23,10 @@ def ver_data():
         idade = ano - 2015
         print('\033[1;34mHOJE É O ANIVER\033[1;33mSÁRIO DO CRIADOR!\033[m')
         print(f"ELE ESTÁ COM \033[1;32m{idade}\033[m ANOS!")
+    elif dia == 31 and mes == 12:
+        print("\033[1;31mFELIZ NATA\033[1;mL A TODOS\033[m")
+    elif dia == 1 and mes == 1:
+        print("\033[1;31mFE\033[1;33mLIZ\033[1;97m ANO\033[1;34m NOVO!")
 def rolar_dado():
     print("Rolando o dado...")
     time.sleep(3)
@@ -152,6 +157,11 @@ def pedrapapeltesoura():
                 pontos_computador += 1
         else:
             print("Não entendi :~")
+def senha():
+    print("\033[0;34mGerando senha. Aguarde...")
+    time.sleep(3)
+    password = ''.join(random.choice(string.ascii_uppercase) + random.choice(string.ascii_lowercase) + random.choice(string.digits + string.punctuation) for i in range(4))
+    print(f"Senha gerada: \033[0;34m{password}")
 
 def sair():
     print("Obrigado por usar o PyAssist. Volte sempre!")
@@ -166,7 +176,7 @@ art = '''\033[0;34m██████╗ ██╗   ██╗ █████�
 \033[m'''
 #começando o programa
 print(art)
-print("Version 12.0")
+print("Version 13.0")
 print('\033[0;34m--=\033[m'*15)
 print("\033[1;33mBem-vindo ao PyAssist, o assistente virtual!\033[m")
 print('\033[0;34m--=\033[m'*15)
@@ -185,7 +195,8 @@ while True:
 [9] Pesquisar na wikipédia
 [10] Calcular hipotenusa
 [11] Pedra, papel e tesoura
-[12] Sair
+[12] Gerador de Senha
+[13] Sair
 -> """))
     except ValueError:
         print("Erro! Digite somente número!")
@@ -215,6 +226,8 @@ while True:
     elif command == 11:
         pedrapapeltesoura()
     elif command == 12:
+        senha()
+    elif command == 13:
         sair()
         break
     else:
